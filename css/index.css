@@ -1,4 +1,10 @@
-/* Start Global Rules */
+/*===========================================================================
+    Global Rules
+ ===========================================================================*/
+:root {
+    --main-color: #10cab7
+}
+
 .border {
     border: 2px solid red;
 }
@@ -51,7 +57,11 @@ body {
     }
 }
 
-/* Header */
+
+/*====================================================================
+    Header
+ =====================================================================*/
+
 .header {
     padding: 20px;
 }
@@ -109,6 +119,7 @@ body {
     top: calc(100% + 15px);
     padding: 0;
     margin: 0;
+    z-index: 1;
 }
 
 /* Show menu on hover */
@@ -159,4 +170,38 @@ body {
 /* Add border between list items */
 ul li:not(:last-child) {
     border-bottom: 1px solid #ddd;
+}
+
+
+
+/*====================================================================
+    Start Landing Section
+ ====================================================================*/
+.landing {
+    background-image: url(../images/landing.jpg);
+    background-size: cover;
+    height: calc(100vh - 64px);
+    position: relative;
+}
+
+.landing .intro-text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 375px;
+    max-width: 100%;
+
+}
+
+.landing .intro-text h1 {
+    color: var(--main-color);
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.landing .intro-text p {
+    font-size: 19px;
+    line-height: 1.55;
 }
