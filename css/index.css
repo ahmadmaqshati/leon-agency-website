@@ -5,6 +5,7 @@
     --main-color: #10cab7;
     --secondary-color: #2c4755;
     --section-padding: 60px;
+    --content-margin-top: 100px;
     --section-background: #f6f6f6;
 }
 
@@ -29,7 +30,7 @@ body {
     background-color: rgba(0, 0, 0, 0.161);
 }
 
-.test {
+.gap {
     display: flex;
     flex-direction: column;
     gap: 1px;
@@ -251,8 +252,7 @@ ul li:not(:last-child) {
     Features Section
  ====================================================================*/
 .features {
-    padding-top: var(--section-padding);
-    padding-bottom: var(--section-padding);
+    padding: var(--section-padding) 0;
     background-color: var(--section-background)
 }
 
@@ -292,6 +292,15 @@ ul li:not(:last-child) {
 }
 
 
+@media (min-width: 330px) and (max-width: 991px) {
+    .features .feat-col {
+        grid-column: 1 / -1;
+        width: 50%;
+        margin: auto;
+    }
+}
+
+
 
 /*====================================================================
     Services Section
@@ -299,17 +308,14 @@ ul li:not(:last-child) {
 
 .services {
     background-color: white;
-
-
+    padding: var(--section-padding) 0;
 }
-
-
 
 .services .services-content {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, auto));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 60px;
-    margin-top: 100px;
+    margin-top: var(--content-margin-top)
 }
 
 .services .col .serv {
@@ -340,6 +346,7 @@ ul li:not(:last-child) {
     width: 260px;
     height: 290px;
     position: relative;
+    z-index: 1;
 }
 
 .services .col .image img {
@@ -348,7 +355,7 @@ ul li:not(:last-child) {
     display: block;
 }
 
-.services .col .image::before {
+.services .services-content .image::before {
     content: '';
     display: block;
     background-color: var(--secondary-color);
@@ -367,10 +374,15 @@ ul li:not(:last-child) {
         text-align: center;
     }
 
+    .services .col.img-col {
+        grid-column: 1 / -1;
+        justify-self: center;
+
+    }
+
     .services .col .image {
         width: 200px;
         height: 210px;
-        margin: auto;
     }
 
     .services .col .image::before {
@@ -383,19 +395,19 @@ ul li:not(:last-child) {
 
 @media (max-width: 330px) {
     .services .services-content {
-        grid-template-columns: repeat(auto-fill, minmax(200px, auto));
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
 }
 
 @media (min-width: 689px) and (max-width: 1200px) {
-    .services .col.img-col .image {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
+
+    .services .col.img-col {
+        grid-column: 1 / -1;
+        justify-self: center;
+
     }
+
 }
-
-
 
 
 /*====================================================================
@@ -403,15 +415,14 @@ ul li:not(:last-child) {
  ====================================================================*/
 .portfolio {
     background-color: var(--section-background);
+    padding: var(--section-padding) 0;
 }
-
 
 .portfolio .portfolio-content {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, auto));
     gap: 30px;
-    margin-top: 100px;
-    margin-bottom: 50rem;
+    margin-top: var(--content-margin-top)
 }
 
 .portfolio .portfolio-content .card {
@@ -437,4 +448,66 @@ ul li:not(:last-child) {
     color: #444;
     font-weight: 300;
     line-height: 1.55;
+}
+
+
+
+@media (min-width: 660px) and (max-width: 1199px) {
+    .portfolio .portfolio-content .card-col {
+        grid-column: 1 / -1;
+        width: 50%;
+        margin: auto;
+    }
+}
+
+
+
+/*====================================================================
+    About Section
+ ====================================================================*/
+
+.about {
+    padding: var(--section-padding) 0;
+    background-color: #fff;
+}
+
+.about .about-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--content-margin-top);
+}
+
+.about .about-content .image {
+    width: 275px;
+    height: 300px;
+    position: relative;
+    z-index: 1;
+}
+
+.about .about-content .image img {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.about .about-content .image::before {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: calc(100% + 60px);
+    background: #ebeced;
+    top: -30px;
+    z-index: -1;
+    left: -20px
+}
+
+
+
+
+
+
+.about .about-content .text {
+    flex-basis: calc(100% - 500px);
 }
